@@ -7,38 +7,13 @@ np.set_printoptions(threshold=np.inf, suppress=True)
 
 ARR_SIZE = 50000
 
-dados_aleatorios = {
-    '50-merge': [],
-    '500-merge': [],
-    '5000-merge': [],
-    '50000-merge': [],
-    '50-selection': [],
-    '500-selection': [],
-    '5000-selection': [],
-    '50000-selection': [],
+mergeData = {
+                '50-ascending': np.array([]),'50-descending': np.array([]),'50-random': np.array([]),'500-ascending': np.array([]),'500-descending': np.array([]),'500-random': np.array([]),'5000-ascending': np.array([]),'5000-descending': np.array([]),'5000-random': np.array([]),'50000-ascending': np.array([]),'50000-descending': np.array([]),'50000-random': np.array([])
 }
 
-decrescente = {
-    '50-merge': [],
-    '500-merge': [],
-    '5000-merge': [],
-    '50000-merge': [],
-    '50-selection': [],
-    '500-selection': [],
-    '5000-selection': [],
-    '50000-selection': [],
-}
+selectionData = {
+                '50-ascending': np.array([]),'50-descending': np.array([]),'50-random': np.array([]),'500-ascending': np.array([]),'500-descending': np.array([]),'500-random': np.array([]),'5000-ascending': np.array([]),'5000-descending': np.array([]),'5000-random': np.array([]),'50000-ascending': np.array([]),'50000-descending': np.array([]),'50000-random': np.array([])}
 
-crescente = {
-    '50-merge': [],
-    '500-merge': [],
-    '5000-merge': [],
-    '50000-merge': [],
-    '50-selection': [],
-    '500-selection': [],
-    '5000-selection': [],
-    '50000-selection': [],
-}
 
 # print(data)
 
@@ -56,6 +31,7 @@ for i in range(ARR_SIZE, -1, -1):
 
 ### MERGE-SORT ###
 
+
 # 50 ELEMENTOS
 for i in range(100):
    random_array = np.random.randint(1, 100000001, size=50)
@@ -65,7 +41,8 @@ for i in range(100):
    elapsed_time = time.time() - start_time
    
    if elapsed_time:
-       dados_aleatorios['50-merge'].append(elapsed_time)
+       np.append(dados_aleatorios['50-merge'], [elapsed_time])
+    #    dados_aleatorios['50-merge'].append(elapsed_time)
    print(f'--- {elapsed_time} seconds to order a randomized 50-element array using Merge-Sort. ---')
    
    start_time_selectionSort = time.time()
@@ -73,91 +50,19 @@ for i in range(100):
    elapsed_time_selectionSort = time.time() - start_time_selectionSort
    
    if (elapsed_time_selectionSort):
-      dados_aleatorios['50-merge'].append(elapsed_time_selectionSort)
+      np.append(dados_aleatorios['50-selection'], [elapsed_time_selectionSort])
+    #   dados_aleatorios['50-selection'].append(elapsed_time_selectionSort)
    print(f'--- {elapsed_time_selectionSort} seconds to order a randomized 50-element array using Selection-Sort. ---')
 
 # print(dados_aleatorios['50-merge'])
+# dados_aleatorios = {
+#                 '50-merge': np.arra#                 '500-merge': np.arra#                 '5000-merge': np.arra#                 '50000-merge': np.arra#                 '50-selection': np.arra#                 '500-selection': np.arra#                 '5000-selection': np.arra#                 '50000-selection': np.array([])
+# }
 
-# 500 ELEMENTOS
+# decrescente = {
+#                 '50-merge': np.arra#                 '500-merge': np.arra#                 '5000-merge': np.arra#                 '50000-merge': np.arra#                 '50-selection': np.arra#                 '500-selection': np.arra#                 '5000-selection': np.arra#                 '50000-selection': np.array([])
+# }
 
-for i in range(10):
-   random_array = np.random.randint(1, 100000001, size=500)
-   
-   start_time = time.time()
-   mergeSortedList = mergeSort(random_array)
-   elapsed_time = time.time() - start_time
-   if elapsed_time:
-       dados_aleatorios['500-merge'].append(elapsed_time)
-   print(f'--- {elapsed_time} seconds to order a randomized 500-element array using Merge-Sort. ---')
-   
-   start_time_selectionSort = time.time()
-   selectionSortedList = selectionSort(random_array)
-   elapsed_time_selectionSort = time.time() - start_time_selectionSort
-   if (elapsed_time_selectionSort):
-      dados_aleatorios['50-merge'].append(elapsed_time_selectionSort)
-   print(f'--- {elapsed_time_selectionSort} seconds to order a randomized 500-element array using Selection-Sort. ---')
-   
-
-# print(dados_aleatorios['500-merge'])
-
-# 5000 ELEMENTOS
-
-for i in range(10):
-   random_array = np.random.randint(1, 100000001, size=5000)
-   start_time = time.time()
-   mergeSortedList = mergeSort(random_array)
-   elapsed_time = time.time() - start_time
-   if elapsed_time:
-       dados_aleatorios['5000-merge'].append(elapsed_time)
-   print(f'--- {elapsed_time} seconds to order a randomized 5000-element array using Merge-Sort. ---')
-
-   start_time_selectionSort = time.time()
-   selectionSortedList = selectionSort(random_array)
-   elapsed_time_selectionSort = time.time() - start_time_selectionSort
-   if (elapsed_time_selectionSort):
-      dados_aleatorios['50-merge'].append(elapsed_time_selectionSort)
-   print(f'--- {elapsed_time_selectionSort} seconds to order a randomized 5000-element array using Selection-Sort. ---')
-
-# print(dados_aleatorios['5000-merge'])
-
-# 50000 ELEMENTOS
-
-for i in range(10):
-   random_array = np.random.randint(1, 100000001, size=50000)
-   
-   start_time = time.time()
-   mergeSortedList = mergeSort(random_array)
-   elapsed_time = time.time() - start_time
-   
-   if elapsed_time:
-       dados_aleatorios['50000-merge'].append(elapsed_time)
-   print(f'--- {elapsed_time} seconds to order a randomized 50000-element array using Merge-Sort. ---')
-
-   start_time_selectionSort = time.time()
-   selectionSortedList = selectionSort(random_array)
-   elapsed_time_selectionSort = time.time() - start_time_selectionSort
-   
-   if (elapsed_time_selectionSort):
-      dados_aleatorios['50-merge'].append(elapsed_time_selectionSort)
-   print(f'--- {elapsed_time_selectionSort} seconds to order a randomized 50000-element array using Selection-Sort. ---')
-
-print ("--------------------------MERGE--------------------------")
-print(dados_aleatorios['50000-merge'])
-print ("--------------------------SELECTION--------------------------")
-print(dados_aleatorios['50000-selection'])
-
-"""
-
-import time
-
-start_time = time.time()
-***ALGORITMO***
-print('Tempo levado para executar: ' + elapsed_time)
-
-
-
-"""
-
-
-
-# print(reordered_array)
+# crescente = {
+#                 '50-merge': np.arra#                 '500-merge': np.arra#                 '5000-merge': np.arra#                 '50000-merge': np.arra#                 '50-selection': np.arra#                 '500-selection': np.arra#                 '5000-selection': np.arra#                 '50000-selection': np.array([])
+# }

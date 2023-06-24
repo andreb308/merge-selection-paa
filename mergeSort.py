@@ -1,22 +1,20 @@
 import numpy as np
 
-def mergeSort(myList):
-    if len(myList) <= 1:
-        return myList
+def mergeSort(arr):
+    if len(arr) <= 1:
+        return arr
 
-    mid = len(myList) // 2
-    left = mergeSort(myList[:mid])
-    right = mergeSort(myList[mid:])
-
+    mid = len(arr) // 2
+    left = mergeSort(arr[:mid])
+    right = mergeSort(arr[mid:])
     return merge(left, right)
 
 def merge(left, right):
-    i = 0
-    j = 0
     merged = []
+    i = j = 0
 
     while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
+        if left[i] < right[j]:
             merged.append(left[i])
             i += 1
         else:
@@ -31,5 +29,4 @@ def merge(left, right):
         merged.append(right[j])
         j += 1
 
-    return np.array(merged)
-
+    return merged
